@@ -4,9 +4,9 @@
 const INVITATION_DATA = {
   couple: {
     bride: "Ana",
-    groom: "Novio de Ana",
+    groom: "Novio",
     bride_full_name: "Ana",
-    groom_full_name: "Novio de Ana",
+    groom_full_name: "Novio",
     instagram_bride: "instagramaccount",
     instagram_groom: "instagramaccount"
   },

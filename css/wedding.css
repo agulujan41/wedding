@@ -732,15 +732,73 @@ body.preloader-site {
   transform: scale(1.1);
 }
 
-#hitungmundur li {
-  background: var(--bg-primary);
-  color: var(--text-main);
-  border: 1px solid var(--bg-secondary);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+/* Countdown Timer - Modernized & Centered */
+body ul#hitungmundur {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 5px !important;
+  margin: 35px auto !important;
+  padding: 0 !important;
+  list-style: none !important;
+  width: 100% !important;
+  max-width: 380px !important;
 }
 
-#hitungmundur li span {
+body ul#hitungmundur li {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--bg-secondary) !important;
+  border-radius: 10px !important;
+  width: 70px !important;
+  height: 70px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex: 0 0 70px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03) !important;
+}
+
+body ul#hitungmundur li:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.06) !important;
+}
+
+body ul#hitungmundur li span {
   color: var(--accent) !important;
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+body ul#hitungmundur li p {
+  color: var(--text-muted) !important;
+  font-size: 0.55rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin: 2px 0 0 0 !important;
+  padding: 0 !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+body ul#hitungmundur li.separator {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: auto !important;
+  height: auto !important;
+  flex: 0 0 auto !important;
+  padding-bottom: 12px !important;
+  color: var(--bg-tertiary) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  display: flex !important;
 }
 
 
