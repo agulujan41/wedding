@@ -35,9 +35,11 @@ body {
   max-width: 100%;
 }
 
-/* ===== Mobile overflow containment ===== */
+/* Main Wrapper */
 .header-wrapper {
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-y: visible; /* Allow natural body scroll */
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 768px) {
@@ -321,6 +323,26 @@ body {
   transform: scale(1.055) translateY(-2px);
   -webkit-box-shadow: 0 2px 25px 0 rgba(30, 30, 30, 0.1);
   box-shadow: 0 2px 25px 0 rgba(30, 30, 30, 0.1);
+}
+
+.section {
+  padding: 80px 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 40px 20px !important;
+  }
+}
+
+.regular-section {
+  padding: 80px 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .regular-section {
+    padding: 40px 20px !important;
+  }
 }
 
 .section-map {
@@ -737,7 +759,8 @@ body ul#hitungmundur {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 5px !important;
+  gap: 8px !important;
+  flex-wrap: nowrap;
   margin: 35px auto !important;
   padding: 0 !important;
   list-style: none !important;
@@ -745,7 +768,7 @@ body ul#hitungmundur {
   max-width: 380px !important;
 }
 
-body ul#hitungmundur li {
+body ul#hitungmundur li:not(.separator) {
   background: var(--bg-primary) !important;
   border: 1px solid var(--bg-secondary) !important;
   border-radius: 10px !important;
@@ -760,9 +783,10 @@ body ul#hitungmundur li {
   flex: 0 0 70px !important;
   box-sizing: border-box !important;
   box-shadow: 0 4px 10px rgba(0,0,0,0.03) !important;
+  transition: transform 0.3s ease !important;
 }
 
-body ul#hitungmundur li:hover {
+body ul#hitungmundur li:not(.separator):hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 15px rgba(0,0,0,0.06) !important;
 }
@@ -778,7 +802,7 @@ body ul#hitungmundur li span {
 
 body ul#hitungmundur li p {
   color: var(--text-muted) !important;
-  font-size: 0.55rem !important;
+  font-size: 0.6rem !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
   margin: 2px 0 0 0 !important;
@@ -792,13 +816,16 @@ body ul#hitungmundur li.separator {
   border: none !important;
   box-shadow: none !important;
   width: auto !important;
-  height: auto !important;
+  height: 70px !important;
   flex: 0 0 auto !important;
-  padding-bottom: 12px !important;
-  color: var(--bg-tertiary) !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
   display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 2px 15px 2px !important; /* Adjust for colon centering */
+  color: var(--bg-tertiary) !important;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
 }
 
 
@@ -834,10 +861,17 @@ body ul#hitungmundur li.separator {
   font-weight: 600 !important;
 }
 
+/* Hide top budget menu on mobile (replaced by Airbnb bottom nav) */
+@media screen and (max-width: 1023px) {
+  .navbar-brand .navbar-burger {
+    display: none !important;
+  }
+}
+
 .instagram {
-  color: var(--accent);
+  color: var(--text-main);
   font-size: 1.25rem;
-  font-weight: 900;
+  font-weight: 800;
   margin-top: 0.5rem;
   display: inline-block;
   vertical-align: middle;
