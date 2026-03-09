@@ -1,14 +1,54 @@
 // Preloader
 $(window).on("load", function () {
-  $("body").addClass("preloader-site");
+  var Body = $("body");
+  Body.addClass("preloader-site");
+  $(".preloader-wrapper").fadeOut("slow");
+  $("body").removeClass("preloader-site");
 });
 
 $(document).ready(function () {
-  $(".preloader-wrapper").fadeOut();
-  $("body").removeClass("preloader-site");
+  // Mobile Bottom Nav Hide/Show on Scroll
+  let lastScrollTop = 0;
+  const bottomNav = $('#bottom-nav');
+  let scrollTimeout;
+
+  $(window).on('scroll', function() {
+    let st = $(this).scrollTop();
+
+    // Clear timeout if still scrolling
+    clearTimeout(scrollTimeout);
+
+    if (st > lastScrollTop && st > 100) {
+      // Scrolling down - hide
+      bottomNav.addClass('nav-hidden');
+    } else {
+      // Scrolling up - show
+      bottomNav.removeClass('nav-hidden');
+    }
+
+    lastScrollTop = st;
+
+    // Show menu after 500ms of no scrolling
+    scrollTimeout = setTimeout(function() {
+      bottomNav.removeClass('nav-hidden');
+    }, 500);
+  });
 
   // Load dynamic data from global variables (data/data.js and data/fixtures.js)
   loadInvitationData();
+
+  // Highlight active bottom nav item on scroll
+  $(window).on('scroll', function() {
+    let scrollPos = $(document).scrollTop();
+    $('.bottom-nav-item').each(function() {
+      let currLink = $(this);
+      let refElement = $(currLink.attr("href"));
+      if (refElement.length && refElement.position().top <= scrollPos + 150 && refElement.position().top + refElement.outerHeight() > scrollPos) {
+        $('.bottom-nav-item').removeClass("active");
+        currLink.addClass("active");
+      }
+    });
+  });
 });
 
 function loadInvitationData() {
@@ -31,10 +71,9 @@ function loadInvitationData() {
   );
   $(".hero").css(
     "background",
-    `linear-gradient(rgba(153, 110, 109, 0.65), rgba(153, 110, 109, 0.65)), rgba(0, 0, 0, 0.55) url("${fixtures.images.hero}") no-repeat`
+    `linear-gradient(rgba(47, 62, 70, 0.4), rgba(47, 62, 70, 0.6)), url("${fixtures.images.hero}") no-repeat`
   );
   $(".hero").css("background-size", "cover");
-  $(".hero").css("background-attachment", "fixed");
 
   // Update Navigation
   $("#nav-waktu, #nav-desktop-waktu").text(data.ui.nav.waktu);
@@ -79,7 +118,7 @@ function loadInvitationData() {
     if (fixtures.images.story[index]) {
       $(".foto" + storyIndex).css(
         "background-image",
-        `linear-gradient(rgba(95, 2, 2, 0.5), rgba(48, 47, 47, 0.9)), url("${fixtures.images.story[index]}")`
+        `linear-gradient(rgba(47, 62, 70, 0.4), rgba(47, 62, 70, 0.6)), url("${fixtures.images.story[index]}")`
       );
     }
   });
