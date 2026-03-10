@@ -122,7 +122,7 @@ section, .section, .main-content, .regular-section,
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: hidden !important;
   touch-action: pan-y; /* Allow only vertical scroll, prevent any horizontal drift */
 }
 
