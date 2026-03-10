@@ -401,20 +401,20 @@ section, .section, .main-content, .regular-section,
 }
 
 .floral-bottom {
-  bottom: 0;
+  bottom: -4px; /* Move down slightly to overlap any rounding/image-edge issues */
   background-image: url('../image/flowers_bottom.png');
-  background-position: bottom center; /* Changed from left to center */
+  background-position: bottom center;
 }
 
 @media (max-width: 599px) {
   .floral-bottom {
-    bottom: 0;
-    height: 180px; /* Increased from 120px */
-    background-size: auto 150%; /* Make them much bigger on mobile */
+    bottom: -8px; /* Slightly more aggressive on mobile */
+    height: 180px;
+    background-size: auto 150%;
   }
   .floral-top {
-    height: 180px; /* Increased from 120px */
-    background-size: auto 150%; /* Make them much bigger on mobile */
+    height: 180px;
+    background-size: auto 150%;
   }
 }
 
