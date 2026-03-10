@@ -36,7 +36,7 @@ $(document).ready(function () {
     // 3. Prepare Home Animations (strip 'animate' class so they can re-trigger)
     $(".word-by-word, .typing, [data-aos]").removeClass("animate");
 
-    // 4. Wait 5 seconds (total from click) and then reveal invitation
+    // 4. Wait 2.5 seconds (total from click) and then reveal invitation
     setTimeout(() => {
       preloader.fadeOut(1000, function() {
         body.removeClass("is-locked"); // Restore scrolling
@@ -46,7 +46,7 @@ $(document).ready(function () {
         }
         initAnimationObserver();
       });
-    }, 6000); // 1s delay + 5s wait
+    }, 2500); // Adjusted to 2.5s total as requested
   });
   // Mobile Bottom Nav Hide/Show on Scroll
   let lastScrollTop = 0;
@@ -273,3 +273,25 @@ function scrollFunction() {
         : "none";
   }
 }
+
+// Floral Dividers Animation
+document.addEventListener("DOMContentLoaded", function() {
+  const floralDividers = document.querySelectorAll('.floral-divider');
+  
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('sway');
+        } else {
+          entry.target.classList.remove('sway');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    floralDividers.forEach(divider => observer.observe(divider));
+  } else {
+    // Fallback for older browsers
+    floralDividers.forEach(divider => divider.classList.add('sway'));
+  }
+});
