@@ -14,26 +14,11 @@ $(document).ready(function () {
 
   $(window).on('scroll', function() {
     let st = $(this).scrollTop();
+    const heroHeight = $('.hero').outerHeight() || window.innerHeight;
 
-    // Clear timeout if still scrolling
     clearTimeout(scrollTimeout);
 
-    if (st > lastScrollTop && st > 100) {
-      // Scrolling down - hide
-      bottomNav.addClass('nav-hidden');
-    } else {
-      // Scrolling up - show
-      bottomNav.removeClass('nav-hidden');
-    }
-
-    lastScrollTop = st;
-
-    // Show menu after 500ms of no scrolling
-    scrollTimeout = setTimeout(function() {
-      bottomNav.removeClass('nav-hidden');
-    }, 500);
-
-    // Desktop Floating Nav Toggle
+    // --- Desktop Floating Nav (always evaluate, not blocked by hero check) ---
     const desktopNav = $('#desktop-nav-fixed');
     if ($(window).width() > 768) {
       if (st > 300) {
@@ -42,7 +27,34 @@ $(document).ready(function () {
         desktopNav.removeClass('is-visible');
       }
     }
+
+    // --- Mobile Bottom Nav ---
+    const inHero = st < heroHeight * 0.85;
+
+    if (inHero) {
+      // In the hero section: always hide
+      bottomNav.addClass('nav-hidden');
+    } else {
+      // Past the hero: show/hide based on scroll direction
+      if (st > lastScrollTop) {
+        // Scrolling down
+        bottomNav.addClass('nav-hidden');
+      } else {
+        // Scrolling up or just entered a new section
+        bottomNav.removeClass('nav-hidden');
+      }
+
+      // Re-show after pausing
+      scrollTimeout = setTimeout(function() {
+        bottomNav.removeClass('nav-hidden');
+      }, 500);
+    }
+
+    lastScrollTop = st;
   });
+
+  // Hide bottom nav on initial load (user starts at hero)
+  bottomNav.addClass('nav-hidden');
 
   // Load dynamic data from global variables (data/data.js and data/fixtures.js)
   loadInvitationData();
