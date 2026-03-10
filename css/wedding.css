@@ -597,8 +597,55 @@ body.preloader-site {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80px;
+  text-align: center;
 }
 
+.preloader-wrapper .preloader img {
+  width: 60px;
+  animation: rotate-expand 2s ease-in-out infinite;
+}
+
+@keyframes rotate-expand {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 0.8; }
+}
+
+/* Typing Effect */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent);
+  width: 0;
+  margin: 0 auto;
+}
+
+.typing.animate {
+  animation: typing 1.5s steps(12) forwards, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 12ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* Word-by-word Reveal */
+.word-by-word span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-right: 0.25em;
+}
+
+.word-by-word.animate span {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Standardized buttons */
 .btn-whatsapp {

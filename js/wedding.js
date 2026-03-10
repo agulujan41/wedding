@@ -66,6 +66,7 @@ function loadInvitationData() {
   // Update Hero
   $("#hero-subtitle").text(data.ui.hero_subtitle);
   $("#couple-names-header").text(`${data.couple.bride} & ${data.couple.groom}`);
+  $("#couple-names-header").addClass("typing");
   $("#event-location-summary").html(
     `${data.event.day}, ${data.event.date} ${data.event.month_year}<br>${data.event.location_name}`
   );
@@ -85,9 +86,12 @@ function loadInvitationData() {
   // Update Main Message
   $("#main-message").html(data.ui.main_message);
 
-  // Update Couple Names
-  $("#bride-name").text(data.couple.bride_full_name);
-  $("#groom-name").text(data.couple.groom_full_name);
+  // Update Couple Names with Typing Animation
+  $("#bride-name").text(data.couple.bride_full_name).addClass("typing");
+  $("#groom-name").text(data.couple.groom_full_name).addClass("typing");
+  
+  // Initialize scroll-based animation observer
+  initAnimationObserver();
 
   // Update Event Section (Cuándo)
   $("#title-waktu").text(data.ui.section_titles.waktu);
@@ -168,6 +172,32 @@ function loadInvitationData() {
       days: "Días"
     });
   }
+}
+
+function prepareAnimatedText(selector, text, animationClass) {
+  const container = $(selector);
+  container.addClass(animationClass).empty();
+  
+  const words = text.split(" ");
+  words.forEach((word, i) => {
+    const span = $("<span></span>").text(word);
+    span.css("transition-delay", (i * 0.3) + "s");
+    container.append(span);
+  });
+}
+
+function initAnimationObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        $(entry.target).addClass("animate");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  $(".word-by-word, .typing").each(function() {
+    observer.observe(this);
+  });
 }
 
 // Hamburger Menu
