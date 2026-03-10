@@ -4,21 +4,21 @@
 const INVITATION_DATA = {
   couple: {
     bride: "Ana",
-    groom: "Novio",
+    groom: "Roger",
     bride_full_name: "Ana",
-    groom_full_name: "Novio",
+    groom_full_name: "Roger",
     instagram_bride: "instagramaccount",
     instagram_groom: "instagramaccount"
   },
   event: {
-    day: "Lunes",
-    date: "30",
-    month_year: "Marzo 2026",
-    full_date: "03/30/2026 17:00:00",
+    day: "Sábado",
+    date: "18",
+    month_year: "Abril 2026",
+    full_date: "18/04/2026 12:00:00",
     location_name: "Nombre del lugar",
     location_address: "Calle Falsa 123, Ciudad, Provincia, País",
-    akad_time: "17.00hs",
-    resepsi_time: "19.00 - 21.00hs"
+    akad_time: "12.00hs",
+    resepsi_time: "13.00 - 18.00hs"
   },
   ui: {
     page_title: "Invitación de Boda",
