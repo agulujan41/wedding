@@ -179,23 +179,15 @@ function loadInvitationData() {
   $("#rsvp-paragraph").html(data.ui.rsvp_paragraph);
   $(".bride-name-short").text(data.couple.bride);
   $(".groom-name-short").text(data.couple.groom);
-  $("#whatsapp-bride-label").text(data.ui.labels.whatsapp_bride);
-  $("#whatsapp-groom-label").text(data.ui.labels.whatsapp_groom);
+  $("#whatsapp-confirm-label").text(data.ui.labels.rsvp_confirm);
   $("#social-footer-label").text(data.ui.labels.social_footer);
 
-  var waTextBride = encodeURIComponent(
-    "Hola " + data.couple.bride + ", voy a confirmar mi asistencia a la boda"
+  var waTextConfirm = encodeURIComponent(
+    "\u00a1Hola! Quiero confirmar mi asistencia a la boda de " + data.couple.bride + " y " + data.couple.groom + ". \uD83C\uDF89"
   );
-  var waTextGroom = encodeURIComponent(
-    "Hola " + data.couple.groom + ", voy a confirmar mi asistencia a la boda"
-  );
-  $("#whatsapp-bride").attr(
+  $("#whatsapp-confirm").attr(
     "href",
-    "https://api.whatsapp.com/send?phone=" + fixtures.links.whatsapp_bride + "&text=" + waTextBride
-  );
-  $("#whatsapp-groom").attr(
-    "href",
-    "https://api.whatsapp.com/send?phone=" + fixtures.links.whatsapp_groom + "&text=" + waTextGroom
+    "https://api.whatsapp.com/send?phone=" + fixtures.links.whatsapp_bride + "&text=" + waTextConfirm
   );
 
   // Initialize Countdown

@@ -774,6 +774,19 @@ body.preloader-site {
   background-color: var(--text-muted) !important;
 }
 
+#rsvp-paragraph {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  line-height: 1.8;
+}
+
+#whatsapp-confirm {
+  display: block;
+  max-width: fit-content;
+  margin: 0 auto 20px;
+}
+
 .cashbac-logo-inline {
   width: 160px;
   vertical-align: middle;
@@ -1089,6 +1102,27 @@ body ul#hitungmundur li.separator {
   visibility: visible !important;
 }
 
+/* Map Card Styling */
+.map-card-wrapper {
+  max-width: 90%;
+  margin: 0 auto 30px;
+}
+
+.map-card {
+  background: var(--white);
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.map-card iframe {
+  border-radius: 10px;
+  display: block;
+  height: 350px !important; /* Slightly smaller for better mobile fit */
+}
+
 /* Fix Waktu section buttons if they are hardcoded as btn-cta */
 .btn-cta {
   background-color: var(--accent) !important;
@@ -1391,8 +1425,7 @@ body ul#hitungmundur li.separator {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;
-  z-index: 1100; /* Higher z-index to overlap home */
+  overflow: visible; /* Higher z-index to overlap home */
   margin-top: -80px; /* Positioned higher */
   margin-bottom: -40px;
   pointer-events: none;

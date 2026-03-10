@@ -38,8 +38,7 @@ const INVITATION_DATA = {
     labels: {
       calendar_btn: "Agregar al Calendario",
       maps_btn: "Ver en Google Maps",
-      whatsapp_bride: "Confirmar a Ana",
-      whatsapp_groom: "Confirmar a Roger",
+      rsvp_confirm: "Confirmar Asistencia",
       social_footer: "¡Los esperamos!"
     },
     rsvp_paragraph: "Es un honor y una alegría para nosotros<br>que nos acompañen en este día tan especial.<br><br>Por favor, confirmen su asistencia vía WhatsApp para una mejor organización.<br><br>¡Nos vemos pronto!"
