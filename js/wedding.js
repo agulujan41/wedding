@@ -196,11 +196,7 @@ function loadInvitationData() {
     "https://api.whatsapp.com/send?phone=" + fixtures.links.whatsapp_groom + "&text=" + waTextGroom
   );
 
-  // Update Instagram
-  $(".bride-ig").text(data.couple.instagram_bride);
-  $(".groom-ig").text(data.couple.instagram_groom);
-  $("#instagram-bride").attr("href", "https://instagram.com/" + data.couple.instagram_bride);
-  $("#instagram-groom").attr("href", "https://instagram.com/" + data.couple.instagram_groom);
+  // Initialize Countdown
 
   // Initialize Countdown
   if ($("#hitungmundur").length > 0) {

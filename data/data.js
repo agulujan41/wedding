@@ -6,9 +6,7 @@ const INVITATION_DATA = {
     bride: "Ana",
     groom: "Roger",
     bride_full_name: "Ana",
-    groom_full_name: "Roger",
-    instagram_bride: "instagramaccount",
-    instagram_groom: "instagramaccount"
+    groom_full_name: "Roger"
   },
   event: {
     day: "Sábado",
@@ -43,8 +41,8 @@ const INVITATION_DATA = {
       resepsi: "Recepción:",
       calendar_btn: "Agregar al Calendario",
       maps_btn: "Ver en Google Maps",
-      whatsapp_bride: "Avisar a la Novia",
-      whatsapp_groom: "Avisar al Novio",
+      whatsapp_bride: "Confirmar a Ana",
+      whatsapp_groom: "Confirmar a Roger",
       social_footer: "¡Los esperamos!"
     },
     rsvp_paragraph: "Es un honor y una alegría para nosotros<br>que nos acompañen en este día tan especial.<br><br>Por favor, confirmen su asistencia vía WhatsApp para una mejor organización.<br><br>¡Nos vemos pronto!"
