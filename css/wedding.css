@@ -1092,9 +1092,14 @@ body ul#hitungmundur li.separator {
 @media (max-width: 599px) and (orientation: portrait) {
   .envelope-text-wrapper {
     position: fixed;
-    top: 33vh; /* Just below the 30vh flowers */
+    top: 25vh; /* Higher up, towards the flowers */
+    left: 0;
     width: 100%;
-    transform: translateX(-50%);
+    transform: none; /* Full width centering */
+  }
+  
+  .envelope-content {
+    margin-top: 8vh; /* Push the envelope down to clear the fixed text */
   }
 }
 
@@ -1104,9 +1109,10 @@ body ul#hitungmundur li.separator {
     position: fixed;
     flex-direction: row;
     top: 8vh; /* Below the 8vh tiny flowers */
-    gap: 15px;
+    left: 0;
     width: 100%;
-    transform: translateX(-50%);
+    transform: none;
+    gap: 15px;
   }
   .envelope-message {
     margin-bottom: 0;
@@ -1114,6 +1120,10 @@ body ul#hitungmundur li.separator {
   }
   .envelope-names {
     font-size: 1.8rem;
+  }
+  
+  .envelope-content {
+    margin-top: 5vh;
   }
 }
 
