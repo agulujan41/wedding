@@ -703,7 +703,7 @@ body.preloader-site {
 
 @media (max-width: 768px) {
   .typing.animate {
-    animation: fadeIn 1s ease-out forwards; /* Simpler animation if wrapping */
+    animation: fadeIn 1.5s ease-out forwards; /* Simpler animation if wrapping */
   }
 }
 

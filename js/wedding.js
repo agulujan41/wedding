@@ -198,6 +198,8 @@ function initAnimationObserver() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         $(entry.target).addClass("animate");
+      } else {
+        $(entry.target).removeClass("animate");
       }
     });
   }, { threshold: 0.1 });
