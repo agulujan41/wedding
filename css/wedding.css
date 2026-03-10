@@ -1381,22 +1381,17 @@ body ul#hitungmundur li.separator {
   align-items: center;
 }
 
-.dress-code-img {
-  position: absolute;
-  max-width: 100%;
-  transition: opacity 0.3s ease;
+.dress-code-img-custom {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: sepia(1) hue-rotate(90deg) saturate(0.5) brightness(0.85);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.dress-code-img.main {
-  opacity: 0;
-}
-
-.dress-code-card:hover .dress-code-img.main {
-  opacity: 1;
-}
-
-.dress-code-card:hover .dress-code-img.border {
-  opacity: 0;
+.dress-code-card:hover .dress-code-img-custom {
+  filter: sepia(1) hue-rotate(90deg) saturate(0.7) brightness(0.9);
+  transform: scale(1.05);
 }
 
 .dress-code-type {
