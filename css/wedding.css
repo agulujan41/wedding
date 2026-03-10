@@ -126,9 +126,10 @@ body {
 .hero .title {
   font-family: 'Rouge Script', sans-serif;
   font-weight: 700;
-  font-size: 5rem;
+  font-size: clamp(3rem, 15vw, 5.5rem);
   color: var(--text-main) !important;
   margin-bottom: 20px;
+  line-height: 1.1;
 }
 
 .hero .subtitle {
@@ -443,10 +444,10 @@ body {
 .nama-lengkap {
   font-family: 'Rouge Script', sans-serif;
   color: var(--text-main);
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 10vw, 4rem);
   letter-spacing: 0px;
   padding-bottom: 10px;
-  line-height: 4rem;
+  line-height: 1.2;
 }
 
 .ampersand {
@@ -620,13 +621,32 @@ body.preloader-site {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .typing {
+    white-space: normal; /* Allow wrapping on mobile */
+    width: auto;
+    border-right: none; /* Hide cursor on mobile if wrapping */
+  }
+}
+
 .typing.animate {
-  animation: typing 1.5s steps(12) forwards, blink 0.7s step-end infinite;
+  animation: typing 1.5s steps(30) forwards, blink 0.7s step-end infinite;
+}
+
+@media (max-width: 768px) {
+  .typing.animate {
+    animation: fadeIn 1s ease-out forwards; /* Simpler animation if wrapping */
+  }
 }
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 12ch }
+  to { width: 100% }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes blink {
