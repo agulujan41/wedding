@@ -1451,3 +1451,25 @@ body ul#hitungmundur li.separator {
   50% { transform: scale(1.01) rotate(0.5deg) translateY(-1px); }
   100% { transform: scale(1) rotate(-0.5deg) translateY(0); }
 }
+
+/* Hero Separator */
+.hero-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.separator-line {
+  display: block;
+  height: 1px;
+  width: 60px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.separator-icon {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
