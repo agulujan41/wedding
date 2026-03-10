@@ -32,19 +32,29 @@ $(document).ready(function () {
     scrollTimeout = setTimeout(function() {
       bottomNav.removeClass('nav-hidden');
     }, 500);
+
+    // Desktop Floating Nav Toggle
+    const desktopNav = $('#desktop-nav-fixed');
+    if ($(window).width() > 768) {
+      if (st > 300) {
+        desktopNav.addClass('is-visible');
+      } else {
+        desktopNav.removeClass('is-visible');
+      }
+    }
   });
 
   // Load dynamic data from global variables (data/data.js and data/fixtures.js)
   loadInvitationData();
 
-  // Highlight active bottom nav item on scroll
+  // Highlight active bottom and floating nav item on scroll
   $(window).on('scroll', function() {
     let scrollPos = $(document).scrollTop();
-    $('.bottom-nav-item').each(function() {
+    $('.bottom-nav-item, .desktop-nav-fixed .navbar-item').each(function() {
       let currLink = $(this);
       let refElement = $(currLink.attr("href"));
       if (refElement.length && refElement.position().top <= scrollPos + 150 && refElement.position().top + refElement.outerHeight() > scrollPos) {
-        $('.bottom-nav-item').removeClass("active");
+        $('.bottom-nav-item, .desktop-nav-fixed .navbar-item').removeClass("active");
         currLink.addClass("active");
       }
     });
@@ -77,10 +87,11 @@ function loadInvitationData() {
   $(".hero").css("background-size", "cover");
 
   // Update Navigation
-  $("#nav-waktu, #nav-desktop-waktu").text(data.ui.nav.waktu);
-  $("#nav-lokasi, #nav-desktop-lokasi").text(data.ui.nav.lokasi);
-  $("#nav-tentang, #nav-desktop-tentang").text(data.ui.nav.tentang);
-  $("#nav-rsvp, #nav-desktop-rsvp").text(data.ui.nav.rsvp);
+  $("#nav-waktu, #nav-desktop-waktu, #nav-floating-waktu").text(data.ui.nav.waktu);
+  $("#nav-floating-home").text(data.ui.nav.home);
+  $("#nav-lokasi, #nav-desktop-lokasi, #nav-floating-lokasi").text(data.ui.nav.lokasi);
+  $("#nav-tentang, #nav-desktop-tentang, #nav-floating-tentang").text(data.ui.nav.tentang);
+  $("#nav-rsvp, #nav-desktop-rsvp, #nav-floating-rsvp").text(data.ui.nav.rsvp);
   $("#nav-desktop-home").text(data.ui.nav.home);
 
   // Update Main Message

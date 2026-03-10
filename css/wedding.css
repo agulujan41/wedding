@@ -35,11 +35,19 @@ body {
   max-width: 100%;
 }
 
+/* Prevent any section or wrapper from creating its own scroll context */
+section, .section, .main-content, .regular-section,
+.section-dark, .section-light, .section-darker {
+  overflow-x: hidden;
+  overflow-y: visible !important; /* Never allow inner scrolling */
+}
+
 /* Main Wrapper */
 .header-wrapper {
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: visible; /* Allow natural body scroll */
-  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: visible;
+  /* DO NOT put -webkit-overflow-scrolling: touch here - it creates a native
+     iOS scroll layer that intercepts touch events inside the hero section */
 }
 
 @media (max-width: 768px) {
@@ -82,9 +90,7 @@ body {
   }
 }
 
-.header-wrapper {
-  padding-bottom: 30px;
-}
+
 
 .navbar-item {
   line-height: 38px;
@@ -103,21 +109,21 @@ body {
 }
 
 
-.hero-foot {
-  background: var(--bg-primary);
-  border-top: 1px solid var(--bg-secondary);
-}
+
 .hero {
   background-color: var(--bg-primary) !important;
   background-image: none !important;
   color: var(--text-main);
   font-family: 'Raleway', sans-serif;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport on mobile Safari */
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  touch-action: pan-y; /* Allow only vertical scroll, prevent any horizontal drift */
 }
 
 .hero-body {
@@ -175,50 +181,49 @@ body {
   }
 }
 
-.hero .hero-foot {
-  height: 50px;
-  background: var(--bg-primary);
-  border-top: 1px solid var(--bg-secondary);
+
+
+/* Floating Desktop Nav Styling */
+.desktop-nav-fixed {
+  background: var(--nav-bg) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  padding: 10px 0;
 }
 
-@media (max-width: 599px) {
-  .hero .hero-foot {
-    display: none;
-  }
+.desktop-nav-fixed.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-.hero .hero-foot .hero-foot--wrapper {
-  margin: 0 auto;
-  height: 50px;
-}
-
-.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop {
-  line-height: 38px;
+.desktop-nav-fixed .navbar-item {
+  color: var(--text-main) !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  transition: color 0.3s ease;
 }
 
-.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li {
-  display: inline-block;
-  padding-right: 15px;
-  padding-left: 15px;
+.desktop-nav-fixed .navbar-item:hover {
+  background: transparent !important;
+  color: var(--accent) !important;
 }
 
-.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li.is-active a {
+.desktop-nav-fixed .navbar-item.active {
+  color: var(--accent) !important;
   border-bottom: 2px solid var(--accent);
 }
 
-.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li a {
-  color: var(--text-main);
-}
 
-.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li a:hover {
-  color: var(--accent);
-  transition: all .2s ease-in-out;
-  border-bottom: 2px solid var(--accent);
-}
 
 
 .space40px{
@@ -230,7 +235,7 @@ body {
 }
 
 .main-content {
-  padding-top: 2rem;
+  padding-top: 0rem;
   color: #000; 
   font-family: 'Raleway', sans-serif;
 }
@@ -362,7 +367,7 @@ body {
 }
 
 .floral-bottom {
-  bottom: 50px; /* Sit above the desktop hero-foot */
+  bottom: 0; /* Reset to absolute bottom now that hero-foot is gone */
   background-image: url('../image/flowers_bottom.png');
   background-position: bottom left;
 }
