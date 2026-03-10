@@ -5,7 +5,7 @@ $(window).on("load", function () {
   const envelope = $("#envelope-wrapper");
 
   // Initial state: prevent scrolling while on envelope
-  body.css("overflow", "hidden");
+  body.addClass("is-locked");
 
   // Hide initial preloader and show envelope
   preloader.fadeOut("slow");
@@ -36,7 +36,7 @@ $(document).ready(function () {
     // 4. Wait 5 seconds (total from click) and then reveal invitation
     setTimeout(() => {
       preloader.fadeOut(1000, function() {
-        body.css("overflow", "auto"); // Restore scrolling
+        body.removeClass("is-locked"); // Restore scrolling
         // Re-trigger AOS and our custom typing animations
         if (typeof AOS !== 'undefined') {
           AOS.refresh();

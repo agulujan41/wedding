@@ -35,6 +35,13 @@ body {
   max-width: 100%;
 }
 
+body.is-locked {
+  overflow: hidden !important;
+  height: 100dvh !important;
+  position: fixed;
+  width: 100%;
+}
+
 /* Prevent any section or wrapper from creating its own scroll context */
 section, .section, .main-content, .regular-section,
 .section-dark, .section-light, .section-darker,
