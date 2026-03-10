@@ -179,6 +179,32 @@ section, .section, .main-content, .regular-section,
     background-image: none !important;
     background-color: var(--bg-primary) !important;
   }
+
+  /* FIX: mobile nav is a flex sibling inside hero (flex-direction: column).
+     It takes 52px, pushing hero-body to offsetTop 52px.
+     Making it absolute removes it from the flex flow entirely. */
+  .hero > nav.is-hidden-desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  /* FIX: hero-body has flex-grow: 1 (Bulma default), filling all space and
+     preventing justify-content: center from centering it. Setting to 0
+     lets the hero flex container center hero-body vertically. */
+  .hero-body {
+    flex-grow: 0 !important;
+  }
+}
+
+/* Floral decorations: more prominent on mobile portrait */
+@media (max-width: 599px) and (orientation: portrait) {
+  .floral-top,
+  .floral-bottom {
+    height: 160px;
+  }
 }
 
 
