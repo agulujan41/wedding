@@ -14,7 +14,7 @@ const INVITATION_DATA = {
     day: "Sábado",
     date: "18",
     month_year: "Abril 2026",
-    full_date: "18/04/2026 12:00:00",
+    full_date: "04/18/2026 12:00:00",
     location_name: "Nombre del lugar",
     location_address: "Calle Falsa 123, Ciudad, Provincia, País",
     akad_time: "12.00hs",
