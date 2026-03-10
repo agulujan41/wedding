@@ -15,8 +15,7 @@ const INVITATION_DATA = {
     full_date: "04/18/2026 12:00:00",
     location_name: "Nombre del lugar",
     location_address: "Calle Falsa 123, Ciudad, Provincia, País",
-    akad_time: "12.00hs",
-    resepsi_time: "13.00 - 18.00hs"
+    event_time: "12.00hs"
   },
   ui: {
     page_title: "Invitación de Boda",
@@ -37,8 +36,6 @@ const INVITATION_DATA = {
       rsvp: "Confirmación de Asistencia"
     },
     labels: {
-      akad: "Ceremonia:",
-      resepsi: "Recepción:",
       calendar_btn: "Agregar al Calendario",
       maps_btn: "Ver en Google Maps",
       whatsapp_bride: "Confirmar a Ana",

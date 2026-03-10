@@ -1269,3 +1269,9 @@ body ul#hitungmundur li.separator {
     font-size: 3rem;
   }
 }
+.golden-icon { 
+  color: #D4AF37; 
+  font-size: 3rem; 
+  margin-bottom: 10px; 
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}

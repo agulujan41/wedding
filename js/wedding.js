@@ -148,10 +148,7 @@ function loadInvitationData() {
   $("#event-day").text(data.event.day);
   $("#event-date").text(data.event.date);
   $("#event-month-year").text(data.event.month_year);
-  $("#akad-label").text(data.ui.labels.akad);
-  $("#akad-time").text(data.event.akad_time);
-  $("#resepsi-label").text(data.ui.labels.resepsi);
-  $("#resepsi-time").text(data.event.resepsi_time);
+  $("#event-time").text(data.event.event_time);
 
   // Update Location Section (Dónde)
   $("#title-lokasi").text(data.ui.section_titles.lokasi);
