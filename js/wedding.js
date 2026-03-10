@@ -24,18 +24,26 @@ $(document).ready(function () {
 
     // 2. Show loading screen again as requested
     setTimeout(() => {
-      preloader.fadeIn("slow");
-    }, 500); // Small delay to see the seal start rotating
+      preloader.fadeIn("slow", function() {
+        // Once preloader is fully visible, hide the envelope instantly behind it
+        envelope.hide();
+      });
+    }, 1000); // 1s delay to see the seal rotate
 
-    // 3. Wait 5 seconds (as requested) and then reveal invitation
+    // 3. Prepare Home Animations (strip 'animate' class so they can re-trigger)
+    $(".word-by-word, .typing, [data-aos]").removeClass("animate");
+
+    // 4. Wait 5 seconds (total from click) and then reveal invitation
     setTimeout(() => {
-      envelope.fadeOut(1000);
-      preloader.fadeOut(1000);
-      body.css("overflow", "auto"); // Restore scrolling
-      
-      // Re-initialize animations since they might have "played" while hidden
-      initAnimationObserver();
-    }, 5000);
+      preloader.fadeOut(1000, function() {
+        body.css("overflow", "auto"); // Restore scrolling
+        // Re-trigger AOS and our custom typing animations
+        if (typeof AOS !== 'undefined') {
+          AOS.refresh();
+        }
+        initAnimationObserver();
+      });
+    }, 6000); // 1s delay + 5s wait
   });
   // Mobile Bottom Nav Hide/Show on Scroll
   let lastScrollTop = 0;

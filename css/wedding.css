@@ -1045,8 +1045,8 @@ body ul#hitungmundur li.separator {
 
 .letter-container {
   position: relative;
-  width: 90%;
-  max-width: 500px;
+  width: 95%;
+  max-width: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1064,8 +1064,8 @@ body ul#hitungmundur li.separator {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
