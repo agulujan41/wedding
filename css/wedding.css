@@ -116,11 +116,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-body {
   background: transparent !important;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .hero .title {
@@ -338,6 +342,39 @@ body {
 
 .regular-section {
   padding: 80px 40px;
+}
+
+.floral-decoration {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(100px, 20vh, 220px); /* Slightly shorter to avoid overwhelming content */
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floral-top {
+  top: 0;
+  background-image: url('../image/flowers_top.png');
+  background-position: top left;
+}
+
+.floral-bottom {
+  bottom: 50px; /* Sit above the desktop hero-foot */
+  background-image: url('../image/flowers_bottom.png');
+  background-position: bottom left;
+}
+
+@media (max-width: 599px) {
+  .floral-bottom {
+    bottom: 0; /* No foot on mobile */
+    height: 120px;
+  }
+  .floral-top {
+    height: 120px;
+  }
 }
 
 @media screen and (max-width: 768px) {
