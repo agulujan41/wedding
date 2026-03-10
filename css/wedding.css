@@ -28,7 +28,6 @@ html {
   width: 100%;
   min-height: 100%;
   overflow-x: hidden !important;
-  scroll-snap-type: y mandatory; /* Snap sections into view */
   scroll-padding-top: 60px; /* Offset for floating nav if needed */
 }
 
@@ -42,6 +41,7 @@ body.is-locked {
   overflow: hidden !important;
   height: 100dvh !important;
   position: fixed;
+  inset: 0;
   width: 100%;
 }
 
@@ -303,7 +303,7 @@ section, .section, .main-content, .regular-section,
 .main-content .section-darker {
   background-color: var(--bg-tertiary);
   color: var(--white);
-  padding: 40px 20px;
+  padding: 40px 40px;
 }
 
 .section-darker .title {
@@ -886,16 +886,92 @@ body.preloader-site {
   transform: translate(-50%, 150%);
 }
 
-.bottom-nav-item {
-  color: var(--text-muted);
-  text-align: center;
-  text-decoration: none;
-  font-size: 1.5rem; /* Larger icons */
-  flex: 1;
+.bottom-nav-item i,
+.bottom-nav-item .nav-icon {
+  font-size: 1.5rem;
+  color: #718096;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-icon-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.nav-icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.nav-icon.main {
+  opacity: 0;
+}
+
+.bottom-nav-item.active .nav-icon.main,
+.bottom-nav-item:active .nav-icon.main {
+  opacity: 1;
+}
+
+.bottom-nav-item.active .nav-icon.border,
+.bottom-nav-item:active .nav-icon.border {
+  opacity: 0;
+}
+
+.bottom-nav-item.active i,
+.bottom-nav-item.active .nav-icon {
+  color: var(--accent);
+}
+
+.bottom-nav-item i,
+.bottom-nav-item .nav-icon {
+  font-size: 1.5rem;
+  color: #718096;
   transition: all 0.3s ease;
+}
+
+.bottom-nav-icon-wrapper {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  object-fit: contain;
+}
+
+.nav-icon.main {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.bottom-nav-item.active .nav-icon.main,
+.bottom-nav-item:active .nav-icon.main {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bottom-nav-item.active .nav-icon.border,
+.bottom-nav-item:active .nav-icon.border {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.bottom-nav-item.active i,
+.bottom-nav-item.active .nav-icon {
+  color: var(--accent);
 }
 
 .bottom-nav-item i {
@@ -1020,6 +1096,9 @@ body ul#hitungmundur li.separator {
   border-radius: 8px !important;
   height: 50px !important;
   font-weight: 600 !important;
+  margin: 30px auto !important; /* Spacing between sections and buttons */
+  display: block;
+  max-width: fit-content;
 }
 
 /* Hide top budget menu on mobile (replaced by Airbnb bottom nav) */
@@ -1253,10 +1332,32 @@ body ul#hitungmundur li.separator {
   text-transform: uppercase;
 }
 
+.dress-code-icon-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .dress-code-img {
-  max-width: 120px;
-  margin-bottom: 25px;
-  filter: sepia(0.2) saturate(0.8);
+  position: absolute;
+  max-width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.dress-code-img.main {
+  opacity: 0;
+}
+
+.dress-code-card:hover .dress-code-img.main {
+  opacity: 1;
+}
+
+.dress-code-card:hover .dress-code-img.border {
+  opacity: 0;
 }
 
 .dress-code-type {

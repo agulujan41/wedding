@@ -24,6 +24,10 @@ $(document).ready(function () {
 
     // 1. Mark as clicked (starts rotation in CSS)
     sealContainer.addClass("clicked");
+    
+    // Fallback: Ensure body is unlocked immediately if for some reason it stays locked
+    // But we usually want to wait until the preloader reveal.
+    // Let's make the reveal more robust.
 
     // 2. Show loading screen again as requested
     setTimeout(() => {
@@ -40,6 +44,7 @@ $(document).ready(function () {
     setTimeout(() => {
       preloader.fadeOut(1000, function() {
         body.removeClass("is-locked"); // Restore scrolling
+        window.scrollTo(0,0); // Ensure we start at top
         // Re-trigger AOS and our custom typing animations
         if (typeof AOS !== 'undefined') {
           AOS.refresh();
