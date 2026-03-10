@@ -1,12 +1,42 @@
-// Preloader
+// Preloader and Envelope Logic
 $(window).on("load", function () {
-  var Body = $("body");
-  Body.addClass("preloader-site");
-  $(".preloader-wrapper").fadeOut("slow");
-  $("body").removeClass("preloader-site");
+  const body = $("body");
+  const preloader = $(".preloader-wrapper");
+  const envelope = $("#envelope-wrapper");
+
+  // Initial state: prevent scrolling while on envelope
+  body.css("overflow", "hidden");
+
+  // Hide initial preloader and show envelope
+  preloader.fadeOut("slow");
 });
 
 $(document).ready(function () {
+  // Handle Seal Click
+  $("#seal-trigger").on("click", function() {
+    const sealContainer = $(this);
+    const preloader = $(".preloader-wrapper");
+    const envelope = $("#envelope-wrapper");
+    const body = $("body");
+
+    // 1. Mark as clicked (starts rotation in CSS)
+    sealContainer.addClass("clicked");
+
+    // 2. Show loading screen again as requested
+    setTimeout(() => {
+      preloader.fadeIn("slow");
+    }, 500); // Small delay to see the seal start rotating
+
+    // 3. Wait 5 seconds (as requested) and then reveal invitation
+    setTimeout(() => {
+      envelope.fadeOut(1000);
+      preloader.fadeOut(1000);
+      body.css("overflow", "auto"); // Restore scrolling
+      
+      // Re-initialize animations since they might have "played" while hidden
+      initAnimationObserver();
+    }, 5000);
+  });
   // Mobile Bottom Nav Hide/Show on Scroll
   let lastScrollTop = 0;
   const bottomNav = $('#bottom-nav');

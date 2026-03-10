@@ -1011,3 +1011,126 @@ body ul#hitungmundur li.separator {
   text-align: center;
   padding: 10px;
 }
+
+/* Envelope Screen */
+.envelope-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-color: var(--bg-primary);
+  z-index: 1500; /* Higher than header, but lower than preloader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s;
+}
+
+.envelope-wrapper.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.letter-container {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+
+.envelope-letter {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.seal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.envelope-seal {
+  width: 100%;
+  height: 100%;
+  opacity: 0.85; /* Initially slightly transparent as requested */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.seal-container:hover .envelope-seal {
+  transform: scale(1.05);
+}
+
+.seal-label {
+  position: absolute;
+  bottom: -30px;
+  width: 120px;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+}
+
+/* Activated State */
+.seal-container.clicked .envelope-seal {
+  opacity: 1 !important;
+  animation: rotateSeal 5s linear forwards;
+}
+
+.seal-container.clicked .seal-label {
+  display: none;
+}
+
+@keyframes rotateSeal {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(1800deg); } /* Multiple rotations in 5s */
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+@media (max-width: 768px) {
+  .letter-container {
+    max-width: 320px;
+  }
+  .seal-container {
+    width: 90px;
+    height: 90px;
+  }
+  .seal-label {
+    font-size: 0.7rem;
+    bottom: -25px;
+  }
+}
