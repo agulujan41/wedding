@@ -8,7 +8,10 @@ $(window).on("load", function () {
   body.addClass("is-locked");
 
   // Hide initial preloader and show envelope
-  preloader.fadeOut("slow");
+  preloader.fadeOut("slow", function() {
+    // Start typing animation ONLY after preloader is gone
+    $("#envelope-message, #envelope-names").addClass("animate");
+  });
 });
 
 $(document).ready(function () {
@@ -107,10 +110,12 @@ function loadInvitationData() {
   $('link[rel="icon"]').attr("href", fixtures.images.favicon);
   $(".preloader img").attr("src", fixtures.images.favicon);
 
-  // Update Hero
+  // Update Hero & Envelope
+  $("#envelope-message").text(data.ui.envelope_message);
+  $("#envelope-names").text(`${data.couple.bride} & ${data.couple.groom}`);
+  
   $("#hero-subtitle").text(data.ui.hero_subtitle);
   $("#couple-names-header").text(`${data.couple.bride} & ${data.couple.groom}`);
-  $("#couple-names-header").addClass("typing");
   $("#event-location-summary").html(
     `${data.event.day}, ${data.event.date} ${data.event.month_year}<br>${data.event.location_name}`
   );

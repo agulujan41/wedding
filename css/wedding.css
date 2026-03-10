@@ -33,6 +33,7 @@ html {
 body {
   overflow-x: hidden !important;
   max-width: 100%;
+  user-select: none;
 }
 
 body.is-locked {
@@ -423,6 +424,14 @@ section, .section, .main-content, .regular-section,
   .floral-bottom {
     height: 30vh; /* Increased vertical presence in portrait */
     background-size: auto 180%; /* Even larger in portrait to minimize repetition */
+  }
+}
+
+/* Tiny flowers for landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .floral-decoration {
+    height: 8vh !important;
+    background-size: auto 60% !important;
   }
 }
 
@@ -1047,13 +1056,65 @@ body ul#hitungmundur li.separator {
   pointer-events: none;
 }
 
-.envelope-content {
-  position: relative;
-  z-index: 10;
+.envelope-text-wrapper {
+  position: absolute;
+  top: 15%; /* Higher position for desktop */
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 300px;
+  z-index: 100; /* Above regular content */
+  pointer-events: none;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+}
+
+.envelope-message {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.envelope-names {
+  font-family: 'Rouge Script', sans-serif;
+  font-size: 2.2rem;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+/* Mobile Portrait - Fixed position between flowers and card */
+@media (max-width: 599px) and (orientation: portrait) {
+  .envelope-text-wrapper {
+    position: fixed;
+    top: 33vh; /* Just below the 30vh flowers */
+    width: 100%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Row layout for landscape or small heights */
+@media (max-height: 480px) {
+  .envelope-text-wrapper {
+    position: fixed;
+    flex-direction: row;
+    top: 8vh; /* Below the 8vh tiny flowers */
+    gap: 15px;
+    width: 100%;
+    transform: translateX(-50%);
+  }
+  .envelope-message {
+    margin-bottom: 0;
+    font-size: 0.6rem;
+  }
+  .envelope-names {
+    font-size: 1.8rem;
+  }
 }
 
 .letter-container {

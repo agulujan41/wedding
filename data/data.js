@@ -23,6 +23,7 @@ const INVITATION_DATA = {
   ui: {
     page_title: "Invitación de Boda",
     hero_subtitle: "Nuestra Boda",
+    envelope_message: "Nos casamos",
     nav: {
       home: "Inicio",
       waktu: "Cuándo",
