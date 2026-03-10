@@ -211,7 +211,7 @@ section, .section, .main-content, .regular-section,
 @media (max-width: 599px) and (orientation: portrait) {
   .floral-top,
   .floral-bottom {
-    height: 28vh;
+    height: 30vh; /* Consistent with the update below */
   }
 }
 
@@ -387,9 +387,9 @@ section, .section, .main-content, .regular-section,
   position: absolute;
   left: 0;
   width: 100%;
-  height: clamp(100px, 20vh, 220px); /* Slightly shorter to avoid overwhelming content */
+  height: clamp(150px, 25vh, 280px); /* Increased from ~220px to make them larger */
   background-repeat: repeat-x;
-  background-size: auto 100%;
+  background-size: auto 120%; /* Increased from 100% to reduce repetition and make flowers bigger */
   pointer-events: none;
   z-index: 1;
 }
@@ -397,22 +397,32 @@ section, .section, .main-content, .regular-section,
 .floral-top {
   top: 0;
   background-image: url('../image/flowers_top.png');
-  background-position: top left;
+  background-position: top center; /* Changed from left to center for better balance */
 }
 
 .floral-bottom {
-  bottom: 0; /* Reset to absolute bottom now that hero-foot is gone */
+  bottom: 0;
   background-image: url('../image/flowers_bottom.png');
-  background-position: bottom left;
+  background-position: bottom center; /* Changed from left to center */
 }
 
 @media (max-width: 599px) {
   .floral-bottom {
-    bottom: 0; /* No foot on mobile */
-    height: 120px;
+    bottom: 0;
+    height: 180px; /* Increased from 120px */
+    background-size: auto 150%; /* Make them much bigger on mobile */
   }
   .floral-top {
-    height: 120px;
+    height: 180px; /* Increased from 120px */
+    background-size: auto 150%; /* Make them much bigger on mobile */
+  }
+}
+
+@media (max-width: 599px) and (orientation: portrait) {
+  .floral-top,
+  .floral-bottom {
+    height: 30vh; /* Increased vertical presence in portrait */
+    background-size: auto 180%; /* Even larger in portrait to minimize repetition */
   }
 }
 
