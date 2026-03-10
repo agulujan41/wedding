@@ -12,6 +12,9 @@ $(window).on("load", function () {
     // Start typing animation ONLY after preloader is gone
     $("#envelope-message, #envelope-names").addClass("animate");
   });
+
+  // Also prepare the home typing elements so they're ready when the invitation opens
+  // (they'll be triggered by triggerHomeTypingAnimation after the seal click)
 });
 
 $(document).ready(function () {
@@ -50,6 +53,9 @@ $(document).ready(function () {
           AOS.refresh();
         }
         initAnimationObserver();
+        // Force-trigger the couple names animation after the preloader fades
+        // Small extra delay so the element is visible before animating
+        setTimeout(() => { triggerHomeTypingAnimation(); }, 200);
       });
     }, 2500); // Adjusted to 2.5s total as requested
   });
@@ -86,6 +92,18 @@ $(document).ready(function () {
     lastScrollTop = st;
   });
 
+  // Re-trigger names animation when user scrolls back to home
+  let wasInHome = false;
+  $(window).on('scroll.homeAnimation', function() {
+    const scrollPos = $(this).scrollTop();
+    const heroBottom = $('#home').outerHeight() || window.innerHeight;
+    const inHome = scrollPos < heroBottom * 0.5;
+    if (inHome && !wasInHome) {
+      triggerHomeTypingAnimation();
+    }
+    wasInHome = inHome;
+  });
+
   // Load dynamic data from global variables (data/data.js and data/fixtures.js)
   loadInvitationData();
 
@@ -120,7 +138,7 @@ function loadInvitationData() {
   $("#envelope-names").text(`${data.couple.bride} & ${data.couple.groom}`);
   
   $("#hero-subtitle").text(data.ui.hero_subtitle);
-  $("#couple-names-header").text(`${data.couple.bride} & ${data.couple.groom}`);
+  // couple-names-header is updated later with full names (see Update Couple Names below)
   $("#event-location-summary").html(
     `${data.event.day}, ${data.event.date} ${data.event.month_year}<br>${data.event.location_name}`
   );
@@ -141,9 +159,12 @@ function loadInvitationData() {
   // Update Main Message
   $("#main-message").html(data.ui.main_message);
 
-  // Update Couple Names with Typing Animation
-  $("#bride-name").text(data.couple.bride_full_name).addClass("typing");
-  $("#groom-name").text(data.couple.groom_full_name).addClass("typing");
+  // Update Couple Names - #couple-names-header is the real element in the hero
+  $("#couple-names-header").text(`${data.couple.bride_full_name} & ${data.couple.groom_full_name}`);
+
+  // Update Couple Names in the main section (#regular-section)
+  $("#bride-name").text(data.couple.bride_full_name);
+  $("#groom-name").text(data.couple.groom_full_name);
   
   // Initialize scroll-based animation observer
   initAnimationObserver();
@@ -215,6 +236,15 @@ function prepareAnimatedText(selector, text, animationClass) {
   });
 }
 
+function triggerHomeTypingAnimation() {
+  // Reset the .typing CSS animation so it plays from the start
+  const typingEls = $('.typing');
+  typingEls.removeClass('animate');
+  setTimeout(() => {
+    typingEls.addClass('animate');
+  }, 80);
+}
+
 function initAnimationObserver() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -226,7 +256,8 @@ function initAnimationObserver() {
     });
   }, { threshold: 0.1 });
 
-  $(".word-by-word, .typing").each(function() {
+  // Only observe word-by-word elements — .typing is controlled via triggerHomeTypingAnimation()
+  $(".word-by-word").each(function() {
     observer.observe(this);
   });
 }
