@@ -887,7 +887,7 @@ body.preloader-site {
 }
 
 .bottom-nav-item i,
-.bottom-nav-item .nav-icon {
+.bottom-nav-item svg {
   font-size: 1.5rem;
   color: #718096;
   transition: all 0.3s ease;
@@ -924,7 +924,7 @@ body.preloader-site {
 }
 
 .bottom-nav-item.active i,
-.bottom-nav-item.active .nav-icon {
+.bottom-nav-item.active svg {
   color: var(--accent);
 }
 

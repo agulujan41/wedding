@@ -297,6 +297,5 @@ document.addEventListener("DOMContentLoaded", function() {
     floralDividers.forEach(divider => observer.observe(divider));
   } else {
     // Fallback for older browsers
-    floralDividers.forEach(divider => divider.classList.add('sway'));
   }
 });
