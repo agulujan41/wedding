@@ -17,7 +17,7 @@ const FIXTURES_DATA = {
     ]
   },
   links: {
-    googleCalendar: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=%F0%9F%92%8D+Boda+Ana+y+Roger&dates=20260418T120000/20260418T180000&location=-24.898639,-65.557556",
+    googleCalendar: "https://calendar.google.com/calendar/u/0/r/eventedit?text=%F0%9F%92%8D+Boda+Ana+y+Roger&dates=20260418T120000/20260418T180000&location=-24.898639,-65.557556",
     googleMaps: "https://maps.google.com/maps?q=-24.898639,-65.557556&t=k&z=17",
     mapsEmbed: "https://maps.google.com/maps?q=-24.898639,-65.557556&t=k&z=17&output=embed",
     whatsapp_bride: "549XXXXXXXXXX",
