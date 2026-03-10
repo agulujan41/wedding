@@ -706,21 +706,17 @@ body.preloader-site {
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-  .typing {
-    white-space: normal; /* Allow wrapping on mobile */
-    width: auto;
-    border-right: none; /* Hide cursor on mobile if wrapping */
-  }
-}
+
+/* Typing Animation is now consistent across devices */
 
 .typing.animate {
   animation: typing 1.5s steps(30) forwards;
 }
 
+/* Re-enable typing on mobile as well */
 @media (max-width: 768px) {
   .typing.animate {
-    animation: fadeIn 1.5s ease-out forwards; /* Simpler animation if wrapping */
+    animation: typing 1.5s steps(30) forwards;
   }
 }
 
@@ -730,8 +726,8 @@ body.preloader-site {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 
