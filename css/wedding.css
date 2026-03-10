@@ -37,15 +37,16 @@ body {
 
 /* Prevent any section or wrapper from creating its own scroll context */
 section, .section, .main-content, .regular-section,
-.section-dark, .section-light, .section-darker {
+.section-dark, .section-light, .section-darker,
+.columns, .column, .container, .navbar-menu, .navbar {
   overflow-x: hidden !important;
-  overflow-y: visible !important; /* Never allow inner scrolling */
+  overflow-y: hidden !important; /* Never allow inner scrolling */
 }
 
 /* Main Wrapper */
 .header-wrapper {
   overflow-x: hidden !important;
-  overflow-y: visible !important;
+  overflow-y: hidden !important;
   /* DO NOT put -webkit-overflow-scrolling: touch here - it creates a native
      iOS scroll layer that intercepts touch events inside the hero section */
 }
@@ -684,7 +685,6 @@ body.preloader-site {
 .typing {
   overflow: hidden !important;
   white-space: nowrap;
-  border-right: 3px solid var(--accent);
   width: 0;
   margin: 0 auto;
 }
@@ -698,7 +698,7 @@ body.preloader-site {
 }
 
 .typing.animate {
-  animation: typing 1.5s steps(30) forwards, blink 0.7s step-end infinite;
+  animation: typing 1.5s steps(30) forwards;
 }
 
 @media (max-width: 768px) {
@@ -717,9 +717,7 @@ body.preloader-site {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes blink {
-  50% { border-color: transparent }
-}
+
 
 /* Word-by-word Reveal */
 .word-by-word span {

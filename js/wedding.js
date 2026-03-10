@@ -16,8 +16,6 @@ $(document).ready(function () {
     let st = $(this).scrollTop();
     const heroHeight = $('.hero').outerHeight() || window.innerHeight;
 
-    clearTimeout(scrollTimeout);
-
     // --- Desktop Floating Nav (always evaluate, not blocked by hero check) ---
     const desktopNav = $('#desktop-nav-fixed');
     if ($(window).width() > 768) {
@@ -35,26 +33,12 @@ $(document).ready(function () {
       // In the hero section: always hide
       bottomNav.addClass('nav-hidden');
     } else {
-      // Past the hero: show/hide based on scroll direction
-      if (st > lastScrollTop) {
-        // Scrolling down
-        bottomNav.addClass('nav-hidden');
-      } else {
-        // Scrolling up or just entered a new section
-        bottomNav.removeClass('nav-hidden');
-      }
-
-      // Re-show after pausing
-      scrollTimeout = setTimeout(function() {
-        bottomNav.removeClass('nav-hidden');
-      }, 500);
+      // Past the hero: show and stay visible
+      bottomNav.removeClass('nav-hidden');
     }
 
     lastScrollTop = st;
   });
-
-  // Hide bottom nav on initial load (user starts at hero)
-  bottomNav.addClass('nav-hidden');
 
   // Load dynamic data from global variables (data/data.js and data/fixtures.js)
   loadInvitationData();
