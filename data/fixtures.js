@@ -18,8 +18,8 @@ const FIXTURES_DATA = {
   },
   links: {
     googleCalendar: "https://calendar.google.com/event?action=TEMPLATE&tmeid=NHAzNWN0czYwdWdqcDByZzY3dmVqdjBpazggYWd1c3RpbmxAZGV2&tmsrc=agustinl%40dev",
-    googleMaps: "https://maps.google.com/maps?ll=-6.246855,106.971346&z=16&t=m&hl=en&gl=ID&mapclient=embed&daddr=RM.%20Pondok%20Kenanga",
-    mapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1280267408406!2d106.9691569150978!3d-6.246854895478259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698d5988a190d9%3A0x22b6a052b0a6a5f3!2sRM.%20Pondok%20Kenanga!5e0!3m2!1sen!2sid!4v1579433583123!5m2!1sen!2sid",
+    googleMaps: "https://maps.google.com/maps?q=-24.898639,-65.557556&t=k&z=17",
+    mapsEmbed: "https://maps.google.com/maps?q=-24.898639,-65.557556&t=k&z=17&output=embed",
     whatsapp_bride: "549XXXXXXXXXX",
     whatsapp_groom: "549XXXXXXXXXX"
   }
