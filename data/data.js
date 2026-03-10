@@ -18,7 +18,7 @@ const INVITATION_DATA = {
     event_time: "12.00hs"
   },
   ui: {
-    page_title: "Invitación de Boda",
+    page_title: "Ana y Roger",
     hero_subtitle: "Nuestra Boda",
     envelope_message: "Nos casamos",
     nav: {
@@ -28,7 +28,7 @@ const INVITATION_DATA = {
       tentang: "Dress Code",
       rsvp: "Confirmar"
     },
-    main_message: "Con la bendición de Dios,<br>tenemos el agrado de invitarlos a celebrar nuestro matrimonio.",
+    main_message: "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios juntó, no lo separe el hombre. <b>Mateo 19:6</b>",
     section_titles: {
       waktu: "Cuándo y Dónde",
       lokasi: "Ubicación",
