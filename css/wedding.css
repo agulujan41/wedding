@@ -27,25 +27,25 @@ html {
   font-family: 'Raleway', Tahoma, sans-serif;
   width: 100%;
   min-height: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   max-width: 100%;
 }
 
 /* Prevent any section or wrapper from creating its own scroll context */
 section, .section, .main-content, .regular-section,
 .section-dark, .section-light, .section-darker {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   overflow-y: visible !important; /* Never allow inner scrolling */
 }
 
 /* Main Wrapper */
 .header-wrapper {
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
   /* DO NOT put -webkit-overflow-scrolling: touch here - it creates a native
      iOS scroll layer that intercepts touch events inside the hero section */
 }
@@ -79,7 +79,7 @@ section, .section, .main-content, .regular-section,
   }
   /* Contain hero footer desktop menu */
   .hero-foot--wrapper {
-    overflow: hidden;
+    overflow: hidden !important;
   }
   /* Contain sections with padding */
   .section-dark,
@@ -621,7 +621,7 @@ section, .section, .main-content, .regular-section,
 }
 
 body.preloader-site {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .preloader-wrapper {
@@ -656,7 +656,7 @@ body.preloader-site {
 
 /* Typing Effect */
 .typing {
-  overflow: hidden;
+  overflow: hidden !important;
   white-space: nowrap;
   border-right: 3px solid var(--accent);
   width: 0;
