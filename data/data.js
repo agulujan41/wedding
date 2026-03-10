@@ -28,14 +28,14 @@ const INVITATION_DATA = {
       home: "Inicio",
       waktu: "Cuándo",
       lokasi: "Dónde",
-      tentang: "Nuestra Historia",
+      tentang: "Dress Code",
       rsvp: "Confirmar"
     },
     main_message: "Con la bendición de Dios,<br>tenemos el agrado de invitarlos a celebrar nuestro matrimonio.",
     section_titles: {
       waktu: "Cuándo y Dónde",
       lokasi: "Ubicación",
-      tentang: "Nuestra Historia",
+      tentang: "Vestimenta",
       rsvp: "Confirmación de Asistencia"
     },
     labels: {
@@ -48,13 +48,5 @@ const INVITATION_DATA = {
       social_footer: "¡Los esperamos!"
     },
     rsvp_paragraph: "Es un honor y una alegría para nosotros<br>que nos acompañen en este día tan especial.<br><br>Por favor, confirmen su asistencia vía WhatsApp para una mejor organización.<br><br>¡Nos vemos pronto!"
-  },
-  story: [
-    { title: "Foto 1", description: "El comienzo de todo..." },
-    { title: "Foto 2", description: "Creciendo juntos." },
-    { title: "Foto 3", description: "Nuestra historia de amor." },
-    { title: "Foto 4", description: "La propuesta." },
-    { title: "Foto 5", description: "Preparativos." },
-    { title: "Foto 6", description: "¡El gran día!" }
-  ]
+  }
 };

@@ -1218,3 +1218,54 @@ body ul#hitungmundur li.separator {
     bottom: -25px;
   }
 }
+/* Dress Code Card */
+.dress-code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.dress-code-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.dress-code-label {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.dress-code-img {
+  max-width: 120px;
+  margin-bottom: 25px;
+  filter: sepia(0.2) saturate(0.8);
+}
+
+.dress-code-type {
+  font-family: 'Rouge Script', sans-serif;
+  font-size: 3.5rem;
+  color: var(--text-main);
+  margin-top: 10px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .dress-code-card {
+    padding: 30px 20px;
+  }
+  .dress-code-type {
+    font-size: 3rem;
+  }
+}

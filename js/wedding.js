@@ -165,17 +165,6 @@ function loadInvitationData() {
 
   // Update Story Section
   $("#story-title").text(data.ui.section_titles.tentang);
-  data.story.forEach(function (item, index) {
-    var storyIndex = index + 1;
-    $(".foto" + storyIndex + " .title-foto").text(item.title);
-    $(".foto" + storyIndex + " .subtitle-foto").html(item.description);
-    if (fixtures.images.story[index]) {
-      $(".foto" + storyIndex).css(
-        "background-image",
-        `linear-gradient(rgba(47, 62, 70, 0.4), rgba(47, 62, 70, 0.6)), url("${fixtures.images.story[index]}")`
-      );
-    }
-  });
 
   // Update Countdown Labels
   $("#label-days").text("Días");
