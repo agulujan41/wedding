@@ -768,7 +768,7 @@ body.preloader-site {
   background-color: var(--bg-tertiary) !important;
   color: var(--white) !important;
   border-radius: 8px !important;
-  padding: 12px 28px !important;
+  padding: 14px 28px 12px !important;
   font-weight: 600 !important;
   height: auto !important;
 }
@@ -1131,11 +1131,13 @@ body ul#hitungmundur li.separator {
   background-color: var(--accent) !important;
   color: var(--white) !important;
   border-radius: 8px !important;
-  height: 50px !important;
+  padding: 14px 32px 12px !important;
   font-weight: 600 !important;
   margin: 30px auto !important; /* Spacing between sections and buttons */
   display: block;
   max-width: fit-content;
+  height: auto !important;
+  line-height: normal !important;
 }
 
 /* Hide top budget menu on mobile (replaced by Airbnb bottom nav) */
