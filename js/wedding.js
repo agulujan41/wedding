@@ -277,7 +277,7 @@ function loadInvitationData() {
   if ($("#hitungmundur").length > 0) {
     $("#hitungmundur").countdown({
       date: data.event.full_date,
-      offset: +7,
+      offset: -3,
       day: "Día",
       days: "Días"
     });
