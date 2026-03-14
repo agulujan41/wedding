@@ -84,6 +84,9 @@ $(document).ready(function () {
       body.removeClass("is-locked"); // Restore scrolling
       window.scrollTo(0,0);
       
+      // Update UI visibility immediately after scroll to top (Ensures hidden on Hero)
+      updateFloatingUI();
+
       // Re-trigger AOS and typing animations
       if (typeof AOS !== 'undefined') {
         AOS.refresh();
@@ -100,12 +103,12 @@ $(document).ready(function () {
   const musicControl = $('#music-control');
   let scrollTimeout;
 
-  $(window).on('scroll', function() {
-    let st = $(this).scrollTop();
+  function updateFloatingUI() {
+    let st = $(window).scrollTop();
     const heroHeight = $('.hero').outerHeight() || window.innerHeight;
+    const desktopNav = $('#desktop-nav-fixed');
 
     // --- Desktop Floating Nav ---
-    const desktopNav = $('#desktop-nav-fixed');
     if ($(window).width() > 768) {
       if (st > 300) {
         desktopNav.addClass('is-visible');
@@ -138,7 +141,10 @@ $(document).ready(function () {
     }
 
     lastScrollTop = st;
-  });
+  }
+
+  $(window).on('scroll', updateFloatingUI);
+  $(window).on('resize', updateFloatingUI);
 
   // Handle Music Toggle Button
   $("#music-toggle").on("click", function() {
