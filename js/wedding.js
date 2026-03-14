@@ -17,48 +17,78 @@ $(window).on("load", function () {
   // (they'll be triggered by triggerHomeTypingAnimation after the seal click)
 });
 
+// Audio Global
+let mainAudio = new Audio('fixtures/music.mp3');
+mainAudio.loop = true;
+
 $(document).ready(function () {
   // Handle Seal Click
   $("#seal-trigger").on("click", function() {
     const sealContainer = $(this);
     const preloader = $(".preloader-wrapper");
     const envelope = $("#envelope-wrapper");
-    const body = $("body");
+    const musicWrapper = $("#music-wrapper");
 
     // 1. Mark as clicked (starts rotation in CSS)
     sealContainer.addClass("clicked");
-    
-    // Fallback: Ensure body is unlocked immediately if for some reason it stays locked
-    // But we usually want to wait until the preloader reveal.
-    // Let's make the reveal more robust.
 
-    // 2. Show loading screen again as requested
+    // 2. Transition to Music Selection Screen
     setTimeout(() => {
       preloader.fadeIn("slow", function() {
-        // Once preloader is fully visible, hide the envelope instantly behind it
         envelope.hide();
+        musicWrapper.addClass("is-visible");
+        preloader.fadeOut("slow");
       });
-    }, 1000); // 1s delay to see the seal rotate
-
-    // 3. Prepare Home Animations (strip 'animate' class so they can re-trigger)
-    $(".word-by-word, .typing, [data-aos]").removeClass("animate");
-
-    // 4. Wait 2.5 seconds (total from click) and then reveal invitation
-    setTimeout(() => {
-      preloader.fadeOut(1000, function() {
-        body.removeClass("is-locked"); // Restore scrolling
-        window.scrollTo(0,0); // Ensure we start at top
-        // Re-trigger AOS and our custom typing animations
-        if (typeof AOS !== 'undefined') {
-          AOS.refresh();
-        }
-        initAnimationObserver();
-        // Force-trigger the couple names animation after the preloader fades
-        // Small extra delay so the element is visible before animating
-        setTimeout(() => { triggerHomeTypingAnimation(); }, 200);
-      });
-    }, 2500); // Adjusted to 2.5s total as requested
+    }, 1000); 
   });
+
+  // Handle Music Selection
+  $("#btn-music-yes").on("click", function() {
+    handleMusicChoice(true);
+  });
+
+  $("#btn-music-no").on("click", function() {
+    handleMusicChoice(false);
+  });
+
+  function handleMusicChoice(withMusic) {
+    const preloader = $(".preloader-wrapper");
+    const musicWrapper = $("#music-wrapper");
+    const body = $("body");
+
+    if (withMusic) {
+      // Start at 4 seconds
+      mainAudio.currentTime = 4;
+      mainAudio.volume = 0;
+      mainAudio.play().catch(e => console.log("Audio play blocked", e));
+      
+      // Volume Fade-in
+      let fadeAudio = setInterval(() => {
+        if (mainAudio.volume < 0.9) {
+          mainAudio.volume += 0.1;
+        } else {
+          mainAudio.volume = 1;
+          clearInterval(fadeAudio);
+        }
+      }, 200);
+    }
+
+    // Prepare transition to Home
+    preloader.fadeIn("slow", function() {
+      musicWrapper.removeClass("is-visible");
+      body.removeClass("is-locked"); // Restore scrolling
+      window.scrollTo(0,0);
+      
+      // Re-trigger AOS and typing animations
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+      initAnimationObserver();
+      setTimeout(() => { triggerHomeTypingAnimation(); }, 200);
+
+      preloader.fadeOut(1000);
+    });
+  }
   // Mobile Bottom Nav Hide/Show on Scroll
   let lastScrollTop = 0;
   const bottomNav = $('#bottom-nav');
