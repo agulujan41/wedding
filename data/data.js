@@ -40,8 +40,15 @@ const INVITATION_DATA = {
       calendar_btn: "Agregar al Calendario",
       maps_btn: "Ver en Google Maps",
       rsvp_confirm: "Confirmar Asistencia",
+      whatsapp_message: "¡Hola! Quiero confirmar mi asistencia a la boda de Ana y Roger. 🎉",
       social_footer: "¡Los esperamos!"
     },
-    rsvp_paragraph: "Es un honor y una alegría para nosotros<br>que nos acompañen en este día tan especial.<br><br>Por favor, confirmen su asistencia vía WhatsApp para una mejor organización.<br><br>¡Nos vemos pronto!"
+    rsvp_paragraph: "Es un honor y una alegría para nosotros<br>que nos acompañen en este día tan especial.<br><br>Por favor, confirmen su asistencia vía WhatsApp para una mejor organización.<br><br>¡Nos vemos pronto!",
+    share: {
+      title: "Invitación de Boda - Ana y Roger",
+      description: "¡Nos casamos! Te invitamos a celebrar con nosotros este momento tan especial.",
+      image: "image/hero.jpg", // Path to the image to show when sharing
+      url: window.location.href
+    }
   }
 };

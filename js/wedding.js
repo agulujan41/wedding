@@ -194,8 +194,18 @@ function loadInvitationData() {
   // Update Page Title and Favicon
   document.title = data.ui.page_title;
   $("#page-title").text(data.ui.page_title);
-  $("#og-title").attr("content", `${data.ui.page_title} - ${data.couple.bride} & ${data.couple.groom}`);
-  $("#og-description").attr("content", data.ui.main_message.replace(/<br>/g, " "));
+  
+  // Dynamic Sharing Meta Tags (OG Tags)
+  if (data.ui.share) {
+    $("#og-title").attr("content", data.ui.share.title);
+    $("#og-description").attr("content", data.ui.share.description);
+    $('meta[property="og:image"]').attr("content", data.ui.share.image);
+    $('meta[property="og:url"]').attr("content", data.ui.share.url || window.location.href);
+  } else {
+    // Fallback if share object is missing
+    $("#og-title").attr("content", `${data.ui.page_title} - ${data.couple.bride} & ${data.couple.groom}`);
+    $("#og-description").attr("content", data.ui.main_message.replace(/<br>/g, " "));
+  }
   $('link[rel="icon"]').attr("href", fixtures.images.favicon);
   $(".preloader img").attr("src", fixtures.images.favicon);
 
@@ -269,9 +279,7 @@ function loadInvitationData() {
   $("#whatsapp-confirm-label").text(data.ui.labels.rsvp_confirm);
   $("#social-footer-label").text(data.ui.labels.social_footer);
 
-  var waTextConfirm = encodeURIComponent(
-    "\u00a1Hola! Quiero confirmar mi asistencia a la boda de " + data.couple.bride + " y " + data.couple.groom + ". \uD83C\uDF89"
-  );
+  var waTextConfirm = encodeURIComponent(data.ui.labels.whatsapp_message);
   $("#whatsapp-confirm").attr(
     "href",
     "https://api.whatsapp.com/send?phone=" + fixtures.links.whatsapp_bride + "&text=" + waTextConfirm
