@@ -15,6 +15,7 @@ const INVITATION_DATA = {
     full_date: "04/18/2026 12:00:00",
     location_name: "Nombre del lugar",
     location_address: "Calle Falsa 123, Ciudad, Provincia, País",
+    hero_location: "Nuestro gran día se acerca",
     event_time: "12.00hs"
   },
   ui: {

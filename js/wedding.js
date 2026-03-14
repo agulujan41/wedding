@@ -140,7 +140,7 @@ function loadInvitationData() {
   $("#hero-subtitle").text(data.ui.hero_subtitle);
   // couple-names-header is updated later with full names (see Update Couple Names below)
   $("#event-location-summary").html(
-    `${data.event.day}, ${data.event.date} ${data.event.month_year}<br>${data.event.location_name}`
+    `${data.event.day}, ${data.event.date} ${data.event.month_year}<br>${data.event.hero_location}`
   );
   $(".hero").css(
     "background",
