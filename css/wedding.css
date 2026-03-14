@@ -450,6 +450,9 @@ section, .section, .main-content, .regular-section,
   .regular-section {
     padding: 40px 20px !important;
   }
+  #tentang-pasangan {
+    padding-top: 80px !important;
+  }
 }
 
 .section-map {
@@ -1801,7 +1804,7 @@ body ul#hitungmundur li.separator {
 
 @media (max-width: 768px) {
   .scroll-indicator {
-    bottom: 20px;
+    bottom: 60px;
   }
   .scroll-indicator span {
     width: 15px;

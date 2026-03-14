@@ -101,6 +101,7 @@ $(document).ready(function () {
   let lastScrollTop = 0;
   const bottomNav = $('#bottom-nav');
   const musicControl = $('#music-control');
+  let hasScrolledDown = false;
   let scrollTimeout;
 
   function updateFloatingUI() {
@@ -121,7 +122,11 @@ $(document).ready(function () {
     // --- Mobile Bottom Nav & Music Control & Scroll Indicator ---
     const inHero = st < heroHeight * 0.85;
 
-    if (inHero) {
+    if (!inHero) {
+      hasScrolledDown = true;
+    }
+
+    if (inHero && !hasScrolledDown) {
       bottomNav.addClass('nav-hidden');
       musicControl.addClass('hidden-utility');
       scrollIndicator.removeClass('hidden-utility');
