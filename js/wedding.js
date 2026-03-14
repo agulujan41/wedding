@@ -76,6 +76,11 @@ $(document).ready(function () {
     // Prepare transition to Home
     preloader.fadeIn("slow", function() {
       musicWrapper.removeClass("is-visible");
+      $("#music-control").addClass("is-active");
+      if (!withMusic) {
+        $("#music-toggle i").removeClass('fa-volume-up').addClass('fa-volume-mute');
+      }
+
       body.removeClass("is-locked"); // Restore scrolling
       window.scrollTo(0,0);
       
@@ -92,13 +97,14 @@ $(document).ready(function () {
   // Mobile Bottom Nav Hide/Show on Scroll
   let lastScrollTop = 0;
   const bottomNav = $('#bottom-nav');
+  const musicControl = $('#music-control');
   let scrollTimeout;
 
   $(window).on('scroll', function() {
     let st = $(this).scrollTop();
     const heroHeight = $('.hero').outerHeight() || window.innerHeight;
 
-    // --- Desktop Floating Nav (always evaluate, not blocked by hero check) ---
+    // --- Desktop Floating Nav ---
     const desktopNav = $('#desktop-nav-fixed');
     if ($(window).width() > 768) {
       if (st > 300) {
@@ -108,18 +114,42 @@ $(document).ready(function () {
       }
     }
 
-    // --- Mobile Bottom Nav ---
+    // --- Mobile Bottom Nav & Music Control ---
     const inHero = st < heroHeight * 0.85;
 
     if (inHero) {
-      // In the hero section: always hide
       bottomNav.addClass('nav-hidden');
+      musicControl.addClass('hidden-utility');
     } else {
-      // Past the hero: show and stay visible
       bottomNav.removeClass('nav-hidden');
+      musicControl.removeClass('hidden-utility');
+    }
+
+    // Music Control Scroll Logic (Hide while scrolling, show when stopped)
+    if (!inHero && musicControl.hasClass('is-active')) {
+      musicControl.addClass('is-scrolling');
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        musicControl.removeClass('is-scrolling');
+      }, 150); // Show after 150ms of no scroll
+    } else {
+      musicControl.removeClass('is-scrolling');
     }
 
     lastScrollTop = st;
+  });
+
+  // Handle Music Toggle Button
+  $("#music-toggle").on("click", function() {
+    const icon = $(this).find('i');
+    if (mainAudio.paused) {
+      mainAudio.play();
+      icon.removeClass('fa-volume-mute').addClass('fa-volume-up');
+    } else {
+      mainAudio.pause();
+      icon.removeClass('fa-volume-up').addClass('fa-volume-mute');
+    }
   });
 
   // Re-trigger names animation when user scrolls back to home

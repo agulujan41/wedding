@@ -1671,3 +1671,76 @@ body ul#hitungmundur li.separator {
     0 1px 0 rgba(255,255,255,0.5),
     0 -1px 0 rgba(0,0,0,0.15);
 }
+
+/* Floating Music Control */
+.music-control {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50px); /* Disappear to the left */
+}
+
+/* Show when active and not scrolling */
+.music-control.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+/* Hide while scrolling */
+.music-control.is-scrolling {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.music-control.hidden-utility {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.music-toggle-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.music-toggle-btn i {
+  font-size: 1.1rem;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--white);
+}
+
+.music-toggle-btn:active {
+  transform: scale(0.9);
+}
+
+/* Adjust for mobile - same as airbnb nav logic */
+@media screen and (max-width: 768px) {
+  .music-control {
+    bottom: 90px; /* Above bottom nav */
+    left: 20px;
+  }
+}
+
