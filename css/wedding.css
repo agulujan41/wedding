@@ -1448,3 +1448,31 @@ body ul#hitungmundur li.separator {
   0%   { transform: translateY(0); }
   100% { transform: translateY(-4px); }
 }
+
+/* Separador elegante: línea - círculo - línea */
+.separador-elegante {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 10px auto 24px;
+  width: 60%;
+  max-width: 300px;
+}
+
+.sep-linea {
+  flex: 1;
+  height: 1px;
+  background-color: var(--text-muted);
+  opacity: 0.4;
+}
+
+.sep-circulo {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
