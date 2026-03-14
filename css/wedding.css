@@ -1478,3 +1478,69 @@ body ul#hitungmundur li.separator {
   flex-shrink: 0;
 }
 
+/* Versículo - estilo carta antigua */
+.verse-card {
+  position: relative;
+  max-width: 480px;
+  margin: 10px auto 20px;
+  padding: 32px 36px;
+  border: 1px solid var(--text-muted);
+  outline: 4px solid transparent;
+  outline-offset: -10px;
+  box-shadow:
+    0 0 0 1px var(--text-muted),
+    inset 0 0 0 6px transparent,
+    inset 0 0 0 7px var(--text-muted);
+  background-color: var(--bg-primary);
+  text-align: center;
+}
+
+/* Marco doble con ::before */
+.verse-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--text-muted);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Esquinas decorativas */
+.verse-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+.verse-corner::after {
+  content: "✦";
+  font-size: 0.9rem;
+}
+.verse-corner.tl { top: 6px;    left: 6px;   }
+.verse-corner.tr { top: 6px;    right: 6px;  }
+.verse-corner.bl { bottom: 6px; left: 6px;   }
+.verse-corner.br { bottom: 6px; right: 6px;  }
+
+/* Texto del versículo */
+.verse-text {
+  font-family: 'Raleway', serif;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--text-main);
+  margin: 0;
+  font-style: italic;
+}
+
+.verse-text b {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
