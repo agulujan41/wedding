@@ -1478,69 +1478,91 @@ body ul#hitungmundur li.separator {
   flex-shrink: 0;
 }
 
-/* Versículo - estilo carta antigua */
+/* Versículo - placa metálica plateada */
 .verse-card {
   position: relative;
-  max-width: 480px;
+  max-width: 460px;
   margin: 10px auto 20px;
   padding: 32px 36px;
-  border: 1px solid var(--text-muted);
-  outline: 4px solid transparent;
-  outline-offset: -10px;
-  box-shadow:
-    0 0 0 1px var(--text-muted),
-    inset 0 0 0 6px transparent,
-    inset 0 0 0 7px var(--text-muted);
-  background-color: var(--bg-primary);
   text-align: center;
+
+  /* Superficie metálica plateada con brillo lateral */
+  background: linear-gradient(
+    115deg,
+    #c8cdd4 0%,
+    #e8ecf0 18%,
+    #f4f6f8 32%,
+    #dde1e6 50%,
+    #b8bdc4 72%,
+    #d4d8de 88%,
+    #c0c4cc 100%
+  );
+
+  /* Borde grabado / biselado */
+  border: none;
+  outline: 2px solid #9aa0aa;
+  outline-offset: -2px;
+  box-shadow:
+    0 2px 4px rgba(255,255,255,0.7) inset,   /* luz desde arriba */
+    0 -1px 3px rgba(0,0,0,0.15) inset,        /* sombra abajo */
+    3px 6px 18px rgba(0,0,0,0.28),            /* sombra física */
+    -1px -1px 0 rgba(255,255,255,0.5);
+
+  border-radius: 3px;
 }
 
-/* Marco doble con ::before */
+/* Marco interno grabado */
 .verse-card::before {
   content: "";
   position: absolute;
   inset: 8px;
-  border: 1px solid var(--text-muted);
-  opacity: 0.45;
+  border: 1px solid rgba(80, 85, 92, 0.35);
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,0.12),
+    0 1px 0 rgba(255,255,255,0.5);
+  border-radius: 1px;
   pointer-events: none;
 }
 
-/* Esquinas decorativas */
+/* Remaches en las esquinas */
 .verse-corner {
   position: absolute;
-  width: 22px;
-  height: 22px;
-  font-size: 1.1rem;
-  line-height: 1;
-  color: var(--text-muted);
-  opacity: 0.7;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8eaec, #8a9098);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.5);
 }
-.verse-corner::after {
-  content: "✦";
-  font-size: 0.9rem;
-}
-.verse-corner.tl { top: 6px;    left: 6px;   }
-.verse-corner.tr { top: 6px;    right: 6px;  }
-.verse-corner.bl { bottom: 6px; left: 6px;   }
-.verse-corner.br { bottom: 6px; right: 6px;  }
+.verse-corner::after { content: ""; }
+.verse-corner.tl { top: 10px;    left: 10px;   }
+.verse-corner.tr { top: 10px;    right: 10px;  }
+.verse-corner.bl { bottom: 10px; left: 10px;   }
+.verse-corner.br { bottom: 10px; right: 10px;  }
 
-/* Texto del versículo */
+/* Texto grabado */
 .verse-text {
-  font-family: 'Raleway', serif;
-  font-size: 0.95rem;
-  line-height: 1.9;
-  color: var(--text-main);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.85;
   margin: 0;
   font-style: italic;
+  color: #3a3e45;
+  /* efecto grabado: sombra clara arriba, oscura abajo */
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.6),
+    0 -1px 0 rgba(0,0,0,0.18);
 }
 
 .verse-text b {
   display: block;
   font-style: normal;
   font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
-  margin-top: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 2.5px;
+  color: #4a5058;
+  margin-top: 10px;
   text-transform: uppercase;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.5),
+    0 -1px 0 rgba(0,0,0,0.15);
 }
