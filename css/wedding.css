@@ -1166,12 +1166,14 @@ body ul#hitungmundur li.separator {
   width: 100vw;
   height: 100dvh;
   background-color: var(--bg-primary);
-  z-index: 1500; /* Higher than header, but lower than preloader */
+  z-index: 1500;
   display: flex;
+  flex-direction: column; /* Stack text and envelope vertically */
   justify-content: center;
   align-items: center;
   overflow: hidden;
   transition: opacity 1s ease-in-out, visibility 1s;
+  padding: 20px;
 }
 
 .envelope-wrapper.fade-out {
@@ -1181,77 +1183,67 @@ body ul#hitungmundur li.separator {
 }
 
 .envelope-text-wrapper {
-  position: absolute;
-  top: 15%; /* Higher position for desktop */
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  min-width: 320px;
-  max-width: 90vw;
-  z-index: 100; /* Above regular content */
+  position: relative; /* Changed from absolute for better stacking */
+  margin-bottom: 30px; /* Space between text and envelope */
+  width: 100%;
+  max-width: 500px;
+  z-index: 100;
   pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .envelope-message {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.1rem; /* Was 0.7rem - too small */
+  letter-spacing: 4px;
+  font-size: 1.2rem;
   color: var(--text-muted);
-  margin-bottom: 6px;
-  /* Override typing width constraint for envelope context */
-  max-width: max-content;
+  margin-bottom: 8px;
 }
 
 .envelope-names {
   font-family: 'Rouge Script', sans-serif;
-  font-size: clamp(2.2rem, 8vw, 3.2rem); /* Responsive size */
+  font-size: clamp(2.5rem, 10vw, 4rem);
   color: var(--text-main);
-  line-height: 1.1;
-  max-width: max-content;
+  line-height: 1;
 }
 
-/* Mobile Portrait - Fixed position between flowers and card */
+/* Base content containment */
+.envelope-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Remove or simplify mobile-specific overrides that might be causing alignment issues */
 @media (max-width: 599px) and (orientation: portrait) {
   .envelope-text-wrapper {
-    position: fixed;
-    top: 25vh; /* Higher up, towards the flowers */
-    left: 0;
-    width: 100%;
-    transform: none; /* Full width centering */
+    margin-bottom: 25px;
   }
-  
-  .envelope-content {
-    margin-top: 8vh; /* Push the envelope down to clear the fixed text */
+  .envelope-message {
+    font-size: 1rem;
+    letter-spacing: 3px;
+  }
+  .envelope-names {
+    font-size: 2.8rem;
   }
 }
 
-/* Row layout for landscape or small heights */
-@media (max-height: 480px) {
-  .envelope-text-wrapper {
-    position: fixed;
+/* Row layout only for very small height screens */
+@media (max-height: 500px) and (min-width: 600px) {
+  .envelope-wrapper {
     flex-direction: row;
-    top: 8vh; /* Below the 8vh tiny flowers */
-    left: 0;
-    width: 100%;
-    transform: none;
-    gap: 15px;
+    gap: 40px;
   }
-  .envelope-message {
+  .envelope-text-wrapper {
     margin-bottom: 0;
-    font-size: 0.6rem;
-  }
-  .envelope-names {
-    font-size: 1.8rem;
-  }
-  
-  .envelope-content {
-    margin-top: 5vh;
+    width: auto;
   }
 }
 

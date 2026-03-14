@@ -8,10 +8,7 @@ $(window).on("load", function () {
   body.addClass("is-locked");
 
   // Hide initial preloader and show envelope
-  preloader.fadeOut("slow", function() {
-    // Start typing animation ONLY after preloader is gone
-    $("#envelope-message, #envelope-names").addClass("animate");
-  });
+  preloader.fadeOut("slow");
 
   // Also prepare the home typing elements so they're ready when the invitation opens
   // (they'll be triggered by triggerHomeTypingAnimation after the seal click)
