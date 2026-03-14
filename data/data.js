@@ -13,8 +13,8 @@ const INVITATION_DATA = {
     date: "18",
     month_year: "Abril 2026",
     full_date: "04/18/2026 12:00:00",
-    location_name: "Nombre del lugar",
-    location_address: "Calle Falsa 123, Ciudad, Provincia, País",
+    location_name: "A 1 km pasando El Mollar II",
+    location_address: "Frente a la hacienda 'Las Nubes'",
     hero_location: "Nuestro gran día se acerca",
     event_time: "12.00hs"
   },
