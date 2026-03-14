@@ -1385,12 +1385,10 @@ body ul#hitungmundur li.separator {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  filter: sepia(1) hue-rotate(90deg) saturate(0.5) brightness(0.85);
-  transition: filter 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .dress-code-card:hover .dress-code-img-custom {
-  filter: sepia(1) hue-rotate(90deg) saturate(0.7) brightness(0.9);
   transform: scale(1.05);
 }
 
