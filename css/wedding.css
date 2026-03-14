@@ -768,9 +768,9 @@ body.preloader-site {
   background-color: var(--bg-tertiary) !important;
   color: var(--white) !important;
   border-radius: 8px !important;
-  padding: 12px 24px !important;
+  padding: 12px 28px !important;
   font-weight: 600 !important;
-  padding: 10px 10px;
+  height: auto !important;
 }
 
 .btn-whatsapp:hover {
