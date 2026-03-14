@@ -29,7 +29,7 @@ const INVITATION_DATA = {
       tentang: "Dress Code",
       rsvp: "Confirmar"
     },
-    main_message: "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios juntó, no lo separe el hombre. <b>Mateo 19:6</b>",
+    main_message: "Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios juntó, no lo separe el hombre.<br><b>Mateo 19:6</b>",
     section_titles: {
       waktu: "Cuándo y Dónde",
       lokasi: "Ubicación",
