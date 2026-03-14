@@ -107,6 +107,7 @@ $(document).ready(function () {
     let st = $(window).scrollTop();
     const heroHeight = $('.hero').outerHeight() || window.innerHeight;
     const desktopNav = $('#desktop-nav-fixed');
+    const scrollIndicator = $('#scroll-indicator');
 
     // --- Desktop Floating Nav ---
     if ($(window).width() > 768) {
@@ -117,15 +118,17 @@ $(document).ready(function () {
       }
     }
 
-    // --- Mobile Bottom Nav & Music Control ---
+    // --- Mobile Bottom Nav & Music Control & Scroll Indicator ---
     const inHero = st < heroHeight * 0.85;
 
     if (inHero) {
       bottomNav.addClass('nav-hidden');
       musicControl.addClass('hidden-utility');
+      scrollIndicator.removeClass('hidden-utility');
     } else {
       bottomNav.removeClass('nav-hidden');
       musicControl.removeClass('hidden-utility');
+      scrollIndicator.addClass('hidden-utility');
     }
 
     // Music Control Scroll Logic (Hide while scrolling, show when stopped)
@@ -358,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).on("click", 'a[href^="#"]', function (event) {
   event.preventDefault();
   $("html, body").animate(
-    { scrollTop: $($.attr(this, "href")).offset().top },
+    { scrollTop: $($.attr(this, "href")).offset().top - 80 },
     500
   );
 });
